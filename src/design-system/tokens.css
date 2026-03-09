@@ -1,26 +1,14 @@
 :root {
-
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-4: 16px;
-  --space-6: 24px;
-
-  /* Core Colors */
-  --color-sidebar-background: #2b2043;
-  --color-sidebar-foreground: #ffffff;
-
-  --color-chat-background: #f4f5f8;
-
-  --color-message-user-bg: #2b2043;
-  --color-message-user-text: #ffffff;
-
-  --color-message-assistant-bg: #ffffff;
-  --color-message-assistant-text: #111111;
-
+  --sidebar-bg: #1e1f26;
+  --sidebar-text: #f8f9fd;
+  --sidebar-text-muted: #b8c0d4;
+  --sidebar-hover: #2a2e3a;
+  --sidebar-active: #3a4152;
+  --sidebar-border: #3a4152;
+  --sidebar-heading: #d3dbeb;
+  --sidebar-elevated: #252a36;
+  --topbar-bg: #ffffff;
+  --topbar-border: #e5e7eb;
+  --topbar-text: #111827;
+  --topbar-text-muted: #6b7280;
 }

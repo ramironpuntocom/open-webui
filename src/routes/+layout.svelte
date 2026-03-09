@@ -59,7 +59,8 @@
 	import { setTextScale } from '$lib/utils/text-scale';
 
 	import NotificationToast from '$lib/components/NotificationToast.svelte';
-	import AppSidebar from '$lib/components/app/AppSidebar.svelte';
+	// import AppSidebar from '../ui/sidebar/CorporateSidebar.svelte';
+	import CorporateSidebar from '../ui/sidebar/CorporateSidebar.svelte';
 	import SyncStatsModal from '$lib/components/chat/Settings/SyncStatsModal.svelte';
 	import Spinner from '$lib/components/common/Spinner.svelte';
 	import { getUserSettings } from '$lib/apis/users';
@@ -454,7 +455,7 @@
 
 					if ($isLastActiveTab) {
 						if ($settings?.notificationEnabled ?? false) {
-							new Notification(`${displayTitle} • Open WebUI`, {
+							new Notification(`${displayTitle} • Phoenix AI`, {
 								body: content,
 								icon: `${WEBUI_BASE_URL}/static/favicon.png`
 							});
@@ -657,7 +658,7 @@
 
 				if ($isLastActiveTab) {
 					if ($settings?.notificationEnabled ?? false) {
-						new Notification(`${title} • Open WebUI`, {
+						new Notification(`${title} • Phoenix AI`, {
 							body: data?.content,
 							icon: `${WEBUI_API_BASE_URL}/users/${data?.user?.id}/profile/image`
 						});
@@ -876,7 +877,7 @@
 		if (backendConfig) {
 			// Save Backend Status to Store
 			await config.set(backendConfig);
-			await WEBUI_NAME.set(backendConfig.name);
+			await WEBUI_NAME.set('Phoenix AI');
 
 			if ($config) {
 				await setupSocket($config.features?.enable_websocket ?? true);
@@ -975,10 +976,11 @@
 
 <svelte:head>
 	<title>{$WEBUI_NAME}</title>
-	<link crossorigin="anonymous" rel="icon" href="{WEBUI_BASE_URL}/static/favicon.png" />
+	<link rel="icon" href="/favicon.png" />
 
+	<meta name="application-name" content={$WEBUI_NAME} />
 	<meta name="apple-mobile-web-app-title" content={$WEBUI_NAME} />
-	<meta name="description" content={$WEBUI_NAME} />
+	<meta name="description" content="Phoenix AI — Enterprise AI Workspace" />
 	<link
 		rel="search"
 		type="application/opensearchdescription+xml"
@@ -997,7 +999,7 @@
 {#if loaded}
 	{#if $isApp}
 		<div class="flex flex-row h-screen">
-			<AppSidebar />
+			<CorporateSidebar />
 
 			<div class="w-full flex-1 max-w-[calc(100%-4.5rem)]">
 				<slot />

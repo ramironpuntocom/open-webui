@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/static/favicon.png" crossorigin="use-credentials" />
+		<link rel="icon" href="/favicon.png" />
 		<link
 			rel="icon"
 			type="image/png"
@@ -29,6 +29,8 @@
 			content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
 		/>
 		<meta name="theme-color" content="#171717" />
+		<meta name="application-name" content="Phoenix AI" />
+		<meta name="description" content="Phoenix AI — Enterprise AI Workspace" />
 		<meta name="robots" content="noindex,nofollow" />
 
 		<script src="/static/loader.js" defer crossorigin="use-credentials"></script>
@@ -93,13 +95,10 @@
 						}
 					}
 				});
-				const isDarkMode = document.documentElement.classList.contains('dark');
-
 				const logo = document.createElement('img');
 				logo.id = 'logo';
-				logo.style =
-					'position: absolute; width: auto; height: 6rem; top: 44%; left: 50%; transform: translateX(-50%); display:block;';
-				logo.src = isDarkMode ? '/static/splash-dark.png' : '/static/splash.png';
+				logo.className = 'h-12 w-12 brand-logo';
+				logo.src = '/src/assets/brand/phoenix-logo.png';
 
 				document.addEventListener('DOMContentLoaded', function () {
 					const splash = document.getElementById('splash-screen');
@@ -112,7 +111,7 @@
 			})();
 		</script>
 
-		<title>Open WebUI</title>
+		<title>Phoenix AI</title>
 
 		%sveltekit.head%
 	</head>
@@ -146,9 +145,8 @@
 			>
 				<img
 					id="logo-her"
-					style="width: auto; height: 13rem"
-					src="/static/splash.png"
-					class="animate-pulse-fast"
+					src="/src/assets/brand/phoenix-logo.png"
+					class="h-12 w-12 brand-logo animate-pulse-fast"
 				/>
 
 				<div style="position: relative; width: 24rem; margin-top: 0.5rem">

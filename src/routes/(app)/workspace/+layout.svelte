@@ -56,7 +56,9 @@
 			? 'md:max-w-[calc(100%-var(--sidebar-width))]'
 			: ''} max-w-full"
 	>
-		<nav class="   px-2.5 pt-1.5 backdrop-blur-xl drag-region select-none">
+		<nav
+			class="px-2.5 pt-1.5 backdrop-blur-xl drag-region select-none bg-[var(--topbar-bg)] border-b border-[var(--topbar-border)] text-[var(--topbar-text)]"
+		>
 			<div class=" flex items-center gap-1">
 				{#if $mobile}
 					<div class="{$showSidebar ? 'md:hidden' : ''} self-center flex flex-none items-center">
@@ -66,7 +68,7 @@
 						>
 							<button
 								id="sidebar-toggle-button"
-								class=" cursor-pointer flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-850 transition cursor-"
+								class="cursor-pointer flex rounded-lg hover:bg-[var(--topbar-border)] transition cursor- text-[var(--topbar-text)]"
 								aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 								on:click={() => {
 									showSidebar.set(!$showSidebar);
@@ -89,8 +91,8 @@
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/models') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/models')
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition select-none"
+									? 'text-[var(--topbar-text)]'
+									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
 								href="/workspace/models">{$i18n.t('Models')}</a
 							>
 						{/if}
@@ -100,8 +102,8 @@
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/knowledge') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/knowledge')
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition select-none"
+									? 'text-[var(--topbar-text)]'
+									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
 								href="/workspace/knowledge"
 							>
 								{$i18n.t('Knowledge')}
@@ -113,8 +115,8 @@
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/prompts') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/prompts')
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition select-none"
+									? 'text-[var(--topbar-text)]'
+									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
 								href="/workspace/prompts">{$i18n.t('Prompts')}</a
 							>
 						{/if}
@@ -124,8 +126,8 @@
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/skills') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/skills')
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition select-none"
+									? 'text-[var(--topbar-text)]'
+									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
 								href="/workspace/skills"
 							>
 								{$i18n.t('Skills')}
@@ -137,8 +139,8 @@
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/tools') ? 'page' : null}
 								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/tools')
-									? ''
-									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition select-none"
+									? 'text-[var(--topbar-text)]'
+									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
 								href="/workspace/tools"
 							>
 								{$i18n.t('Tools')}

@@ -683,7 +683,7 @@
 
 {#if !$mobile && !$showSidebar}
 	<div
-		class=" pt-[7px] pb-2 px-2 flex flex-col justify-between text-black dark:text-white hover:bg-gray-50/30 dark:hover:bg-gray-950/30 h-full z-10 transition-all border-e-[0.5px] border-gray-50 dark:border-gray-850/30"
+		class="pt-[7px] pb-2 px-2 flex flex-col justify-between text-[var(--sidebar-text)] bg-[var(--sidebar-bg)] hover:bg-[var(--sidebar-elevated)] h-full z-10 transition-all"
 		id="sidebar"
 	>
 		<button
@@ -698,16 +698,16 @@
 					placement="right"
 				>
 					<button
-						class="flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group {isWindows
+						class="flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group {isWindows
 							? 'cursor-pointer'
 							: 'cursor-[e-resize]'}"
 						aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 					>
 						<div class=" self-center flex items-center justify-center size-9">
 							<img
-								src="{WEBUI_BASE_URL}/static/favicon.png"
-								class="sidebar-new-chat-icon size-6 rounded-full group-hover:hidden"
-								alt=""
+								src="/src/assets/brand/phoenix-logo.png"
+								alt="Phoenix AI"
+								class="brand-logo h-8 w-8 object-contain group-hover:hidden"
 							/>
 
 							<Sidebar className="size-5 hidden group-hover:flex" />
@@ -720,7 +720,7 @@
 				<div class="">
 					<Tooltip content={$i18n.t('New Chat')} placement="right">
 						<a
-							class=" cursor-pointer flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group"
+							class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
 							href="/"
 							draggable="false"
 							on:click={async (e) => {
@@ -742,7 +742,7 @@
 				<div>
 					<Tooltip content={$i18n.t('Search')} placement="right">
 						<button
-							class=" cursor-pointer flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group"
+							class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
 							on:click={(e) => {
 								e.stopImmediatePropagation();
 								e.preventDefault();
@@ -763,7 +763,7 @@
 					<div class="">
 						<Tooltip content={$i18n.t('Notes')} placement="right">
 							<a
-								class=" cursor-pointer flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group"
+								class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
 								href="/notes"
 								on:click={async (e) => {
 									e.stopImmediatePropagation();
@@ -787,7 +787,7 @@
 					<div class="">
 						<Tooltip content={$i18n.t('Workspace')} placement="right">
 							<a
-								class=" cursor-pointer flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group"
+								class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
 								href="/workspace"
 								on:click={async (e) => {
 									e.stopImmediatePropagation();
@@ -837,7 +837,7 @@
 							}}
 						>
 							<div
-								class=" cursor-pointer flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition group"
+								class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
 							>
 								<div class="self-center relative">
 									<img
@@ -853,7 +853,7 @@
 												<span
 													class="relative inline-flex size-2.5 rounded-full {true
 														? 'bg-green-500'
-														: 'bg-gray-300 dark:bg-gray-700'} border-2 border-white dark:border-gray-900"
+														: 'bg-gray-300 dark:bg-gray-700'} border-2 border-[var(--sidebar-bg)]"
 												></span>
 											</span>
 										</div>
@@ -876,10 +876,10 @@
 			bind:this={navElement}
 			id="sidebar"
 			class="h-screen max-h-[100dvh] min-h-screen select-none {$showSidebar
-				? `${$mobile ? 'bg-white dark:bg-gray-950' : 'bg-white/85 dark:bg-gray-950/80 backdrop-blur-md'} z-50`
+				? `bg-[var(--sidebar-bg)] z-50`
 				: ' bg-transparent z-0 '} {$isApp
 				? `ml-[4.5rem] md:ml-0 `
-				: ' transition-all duration-300 '} shrink-0 text-gray-900 dark:text-gray-200 text-sm fixed top-0 left-0 overflow-x-hidden
+				: ' transition-all duration-300 '} shrink-0 text-[var(--sidebar-text)] text-sm fixed top-0 left-0 overflow-x-hidden border-r border-[var(--sidebar-border)]
         "
 		transition:slide={{ duration: 250, axis: 'x' }}
 		data-state={$showSidebar}
@@ -890,28 +890,27 @@
 				: 'invisible'}"
 		>
 			<div
-				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-gray-700 dark:text-gray-300 sticky top-0 z-10 -mb-3"
+				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-[var(--sidebar-text-muted)] sticky top-0 z-10 -mb-3"
 			>
 				<a
-					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-gray-100/50 dark:hover:bg-gray-850/50 transition no-drag-region"
+					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition no-drag-region"
 					href="/"
 					draggable="false"
 					on:click={newChatHandler}
 				>
 					<img
-						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-6 rounded-full"
-						alt=""
+						src="/src/assets/brand/phoenix-logo.png"
+						alt="Phoenix AI"
+						class="brand-logo h-8 w-8 object-contain"
 					/>
 				</a>
 
 				<a href="/" class="flex flex-1 px-1.5" on:click={newChatHandler}>
 					<div
 						id="sidebar-webui-name"
-						class=" self-center font-medium text-gray-850 dark:text-white font-primary"
+						class="self-center font-semibold tracking-[0.01em] text-[var(--sidebar-text)] font-primary"
 					>
-						{$WEBUI_NAME}
+						Phoenix AI
 					</div>
 				</a>
 				<Tooltip
@@ -919,7 +918,7 @@
 					placement="bottom"
 				>
 					<button
-						class="flex rounded-xl size-8.5 justify-center items-center hover:bg-gray-100/50 dark:hover:bg-gray-850/50 transition {isWindows
+						class="flex rounded-xl size-8.5 justify-center items-center hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition {isWindows
 							? 'cursor-pointer'
 							: 'cursor-[w-resize]'}"
 						on:click={() => {
@@ -936,7 +935,7 @@
 				<div
 					class="{scrollTop > 0
 						? 'visible'
-						: 'invisible'} sidebar-bg-gradient-to-b bg-linear-to-b from-gray-50 dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mb-6"
+						: 'invisible'} sidebar-bg-gradient-to-b bg-linear-to-b from-[var(--sidebar-elevated)] to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mb-6"
 				></div>
 			</div>
 
@@ -951,10 +950,10 @@
 				}}
 			>
 				<div class="pb-1.5">
-					<div class="px-[0.4375rem] flex justify-center text-gray-800 dark:text-gray-200">
+					<div class="px-[0.4375rem] flex justify-center text-[var(--sidebar-text)]">
 						<a
 							id="sidebar-new-chat-button"
-							class="group grow flex items-center space-x-3 rounded-2xl px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition outline-none"
+							class="group grow flex items-center space-x-3 rounded-xl px-3 py-2.5 hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition outline-none"
 							href="/"
 							draggable="false"
 							on:click={newChatHandler}
@@ -965,17 +964,19 @@
 							</div>
 
 							<div class="flex flex-1 self-center translate-y-[0.5px]">
-								<div class=" self-center text-sm font-primary">{$i18n.t('New Chat')}</div>
+								<div class="self-center text-[0.825rem] font-semibold tracking-[0.01em] font-primary">
+									{$i18n.t('New Chat')}
+								</div>
 							</div>
 
 							<HotkeyHint name="newChat" className=" group-hover:visible invisible" />
 						</a>
 					</div>
 
-					<div class="px-[0.4375rem] flex justify-center text-gray-800 dark:text-gray-200">
+					<div class="px-[0.4375rem] flex justify-center text-[var(--sidebar-text)]">
 						<button
 							id="sidebar-search-button"
-							class="group grow flex items-center space-x-3 rounded-2xl px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition outline-none"
+							class="group grow flex items-center space-x-3 rounded-xl px-3 py-2.5 hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition outline-none"
 							on:click={() => {
 								showSearch.set(true);
 							}}
@@ -987,17 +988,19 @@
 							</div>
 
 							<div class="flex flex-1 self-center translate-y-[0.5px]">
-								<div class=" self-center text-sm font-primary">{$i18n.t('Search')}</div>
+								<div class="self-center text-[0.825rem] font-semibold tracking-[0.01em] font-primary">
+									{$i18n.t('Search')}
+								</div>
 							</div>
 							<HotkeyHint name="search" className=" group-hover:visible invisible" />
 						</button>
 					</div>
 
 					{#if ($config?.features?.enable_notes ?? false) && ($user?.role === 'admin' || ($user?.permissions?.features?.notes ?? true))}
-						<div class="px-[0.4375rem] flex justify-center text-gray-800 dark:text-gray-200">
+						<div class="px-[0.4375rem] flex justify-center text-[var(--sidebar-text)]">
 							<a
 								id="sidebar-notes-button"
-								class="grow flex items-center space-x-3 rounded-2xl px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+								class="grow flex items-center space-x-3 rounded-xl px-3 py-2.5 hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition"
 								href="/notes"
 								on:click={itemClickHandler}
 								draggable="false"
@@ -1008,17 +1011,19 @@
 								</div>
 
 								<div class="flex self-center translate-y-[0.5px]">
-									<div class=" self-center text-sm font-primary">{$i18n.t('Notes')}</div>
+									<div class="self-center text-[0.825rem] font-semibold tracking-[0.01em] font-primary">
+										{$i18n.t('Notes')}
+									</div>
 								</div>
 							</a>
 						</div>
 					{/if}
 
 					{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models || $user?.permissions?.workspace?.knowledge || $user?.permissions?.workspace?.prompts || $user?.permissions?.workspace?.tools}
-						<div class="px-[0.4375rem] flex justify-center text-gray-800 dark:text-gray-200">
+						<div class="px-[0.4375rem] flex justify-center text-[var(--sidebar-text)]">
 							<a
 								id="sidebar-workspace-button"
-								class="grow flex items-center space-x-3 rounded-2xl px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+								class="grow flex items-center space-x-3 rounded-xl px-3 py-2.5 hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition"
 								href="/workspace"
 								on:click={itemClickHandler}
 								draggable="false"
@@ -1042,7 +1047,9 @@
 								</div>
 
 								<div class="flex self-center translate-y-[0.5px]">
-									<div class=" self-center text-sm font-primary">{$i18n.t('Workspace')}</div>
+									<div class="self-center text-[0.825rem] font-semibold tracking-[0.01em] font-primary">
+										{$i18n.t('Workspace')}
+									</div>
 								</div>
 							</a>
 						</div>
@@ -1053,7 +1060,7 @@
 					<Folder
 						id="sidebar-models"
 						bind:open={showPinnedModels}
-						className="px-2 mt-0.5"
+						className="px-2.5 mt-1"
 						name={$i18n.t('Models')}
 						chevron={false}
 						dragAndDrop={false}
@@ -1066,7 +1073,7 @@
 					<Folder
 						id="sidebar-channels"
 						bind:open={showChannels}
-						className="px-2 mt-0.5"
+						className="px-2.5 mt-1"
 						name={$i18n.t('Channels')}
 						chevron={false}
 						dragAndDrop={false}
@@ -1090,7 +1097,7 @@
 							/>
 
 							{#if channelIdx < $channels.length - 1 && channel.type !== $channels[channelIdx + 1]?.type}<hr
-									class=" border-gray-100/40 dark:border-gray-800/10 my-1.5 w-full"
+									class="border-[var(--sidebar-border)] my-1.5 w-full opacity-60"
 								/>
 							{/if}
 						{/each}
@@ -1101,7 +1108,7 @@
 					<Folder
 						id="sidebar-folders"
 						bind:open={showFolders}
-						className="px-2 mt-0.5"
+						className="px-2.5 mt-1"
 						name={$i18n.t('Folders')}
 						chevron={false}
 						onAdd={() => {
@@ -1153,7 +1160,7 @@
 
 				<Folder
 					id="sidebar-chats"
-					className="px-2 mt-0.5"
+					className="px-2.5 mt-1"
 					name={$i18n.t('Chats')}
 					chevron={false}
 					on:change={async (e) => {
@@ -1224,7 +1231,7 @@
 							<div class="flex flex-col space-y-1 rounded-xl">
 								<Folder
 									id="sidebar-pinned-chats"
-									buttonClassName=" text-gray-500"
+									buttonClassName="text-[var(--sidebar-text-muted)]"
 									on:import={(e) => {
 										importChatHandler(e.detail, true);
 									}}
@@ -1272,7 +1279,7 @@
 									name={$i18n.t('Pinned')}
 								>
 									<div
-										class="ml-3 pl-1 mt-[1px] flex flex-col overflow-y-auto scrollbar-hidden border-s border-gray-100 dark:border-gray-900 text-gray-900 dark:text-gray-200"
+										class="ml-3 pl-1 mt-[1px] flex flex-col overflow-y-auto scrollbar-hidden border-s border-[var(--sidebar-border)] text-[var(--sidebar-text)]"
 									>
 										{#each $pinnedChats as chat, idx (`pinned-chat-${chat?.id ?? idx}`)}
 											<ChatItem
@@ -1309,7 +1316,7 @@
 								{#each $chats as chat, idx (`chat-${chat?.id ?? idx}`)}
 									{#if idx === 0 || (idx > 0 && chat.time_range !== $chats[idx - 1].time_range)}
 										<div
-											class="w-full pl-2.5 text-xs text-gray-500 dark:text-gray-500 font-medium {idx ===
+											class="w-full pl-2.5 text-[0.7rem] uppercase tracking-[0.06em] text-[var(--sidebar-heading)] font-semibold {idx ===
 											0
 												? ''
 												: 'pt-5'} pb-1.5"
@@ -1368,7 +1375,7 @@
 										}}
 									>
 										<div
-											class="w-full flex justify-center py-1 text-xs animate-pulse items-center gap-2"
+											class="w-full flex justify-center py-1 text-xs text-[var(--sidebar-text-muted)] animate-pulse items-center gap-2"
 										>
 											<Spinner className=" size-4" />
 											<div class=" ">{$i18n.t('Loading...')}</div>
@@ -1377,7 +1384,7 @@
 								{/if}
 							{:else}
 								<div
-									class="w-full flex justify-center py-1 text-xs animate-pulse items-center gap-2"
+									class="w-full flex justify-center py-1 text-xs text-[var(--sidebar-text-muted)] animate-pulse items-center gap-2"
 								>
 									<Spinner className=" size-4" />
 									<div class=" ">{$i18n.t('Loading...')}</div>
@@ -1390,7 +1397,7 @@
 
 				<div class="px-1.5 pt-1.5 pb-2 sticky bottom-0 z-10 -mt-3 sidebar">
 					<div
-						class=" sidebar-bg-gradient-to-t bg-linear-to-t from-white dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mt-6"
+						class="sidebar-bg-gradient-to-t bg-linear-to-t from-[var(--sidebar-elevated)] to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mt-6"
 					></div>
 				<div class="flex flex-col font-primary">
 					{#if $user !== undefined && $user !== null}
@@ -1406,7 +1413,7 @@
 							}}
 						>
 							<div
-								class=" flex items-center rounded-2xl py-2 px-1.5 w-full hover:bg-gray-100/50 dark:hover:bg-gray-900/50 transition"
+								class="flex items-center rounded-xl py-2.5 px-2 w-full hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition"
 							>
 								<div class=" self-center mr-3 relative">
 									<img
@@ -1422,13 +1429,15 @@
 												<span
 													class="relative inline-flex size-2.5 rounded-full {true
 														? 'bg-green-500'
-														: 'bg-gray-300 dark:bg-gray-700'} border-2 border-white dark:border-gray-900"
+														: 'bg-gray-300 dark:bg-gray-700'} border-2 border-[var(--sidebar-bg)]"
 												></span>
 											</span>
 										</div>
 									{/if}
 								</div>
-								<div class=" self-center font-medium">{$user?.name}</div>
+								<div class="self-center font-medium text-[var(--sidebar-text)] line-clamp-1">
+									{$user?.name}
+								</div>
 							</div>
 						</UserMenu>
 					{/if}
@@ -1439,7 +1448,7 @@
 
 	{#if !$mobile}
 		<div
-			class="relative flex items-center justify-center group border-l border-gray-50 dark:border-gray-850/30 hover:border-gray-200 dark:hover:border-gray-800 transition z-20"
+			class="relative flex items-center justify-center group border-l border-[var(--sidebar-border)] hover:border-[var(--sidebar-heading)] transition z-20"
 			id="sidebar-resizer"
 			on:mousedown={resizeStartHandler}
 			role="separator"
