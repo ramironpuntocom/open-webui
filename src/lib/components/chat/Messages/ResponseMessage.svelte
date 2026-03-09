@@ -656,8 +656,10 @@
 				{/if}
 			</Name>
 
-			<div>
-				<div class="chat-{message.role} w-full min-w-full markdown-prose">
+				<div>
+					<div
+						class="chat-{message.role} w-full min-w-full markdown-prose rounded-2xl border border-gray-200/70 dark:border-gray-800/80 bg-white/75 dark:bg-gray-900/35 px-4 py-2 shadow-sm backdrop-blur-[1px]"
+					>
 					<div>
 						{#if model?.info?.meta?.capabilities?.status_updates ?? true}
 							<StatusHistory statusHistory={message?.statusHistory} />

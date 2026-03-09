@@ -365,13 +365,13 @@
 			{:else if message.content !== ''}
 				<div class="w-full">
 					<div class="flex {($settings?.chatBubble ?? true) ? 'justify-end pb-1' : 'w-full'}">
-						<div
-							class="rounded-3xl {($settings?.chatBubble ?? true)
-								? `max-w-[90%] px-4 py-1.5  bg-gray-50 dark:bg-gray-850 ${
-										message.files ? 'rounded-tr-lg' : ''
-									}`
-								: ' w-full'}"
-						>
+							<div
+								class="rounded-3xl {($settings?.chatBubble ?? true)
+									? `max-w-[90%] px-4 py-2 bg-gray-900 text-gray-50 dark:bg-white dark:text-gray-900 shadow-md ${
+											message.files ? 'rounded-tr-lg' : ''
+										}`
+									: ' w-full'}"
+							>
 							{#if message.content}
 								<Markdown
 									id={`${chatId}-${message.id}`}

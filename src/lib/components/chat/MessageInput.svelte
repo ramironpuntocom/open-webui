@@ -1196,13 +1196,13 @@
 							</div>
 						{/if}
 
-						<div
-							id="message-input-container"
-							class="flex-1 flex flex-col relative w-full shadow-lg rounded-3xl border {$temporaryChatEnabled
-								? 'border-dashed border-gray-100 dark:border-gray-800 hover:border-gray-200 focus-within:border-gray-200 hover:dark:border-gray-700 focus-within:dark:border-gray-700'
-								: ' border-gray-100/30 dark:border-gray-850/30 hover:border-gray-200 focus-within:border-gray-100 hover:dark:border-gray-800 focus-within:dark:border-gray-800'}  transition px-1 bg-white/5 dark:bg-gray-500/5 backdrop-blur-sm dark:text-gray-100"
-							dir={$settings?.chatDirection ?? 'auto'}
-						>
+							<div
+								id="message-input-container"
+								class="flex-1 flex flex-col relative w-full shadow-lg rounded-3xl border {$temporaryChatEnabled
+									? 'border-dashed border-gray-200/80 dark:border-gray-700 hover:border-gray-300 focus-within:border-gray-300 hover:dark:border-gray-600 focus-within:dark:border-gray-600'
+									: 'border-gray-200/70 dark:border-gray-800 hover:border-gray-300 focus-within:border-gray-300 hover:dark:border-gray-700 focus-within:dark:border-gray-700'} transition px-1 bg-white/80 dark:bg-gray-900/60 backdrop-blur-md dark:text-gray-100"
+								dir={$settings?.chatDirection ?? 'auto'}
+							>
 							{#if atSelectedModel !== undefined}
 								<div class="px-3 pt-3 text-left w-full flex flex-col z-10">
 									<div class="flex items-center justify-between w-full">

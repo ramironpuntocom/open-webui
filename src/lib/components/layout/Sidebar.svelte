@@ -872,14 +872,14 @@
 <!-- {$i18n.t('Pinned')} -->
 
 {#if $showSidebar}
-	<div
-		bind:this={navElement}
-		id="sidebar"
-		class="h-screen max-h-[100dvh] min-h-screen select-none {$showSidebar
-			? `${$mobile ? 'bg-gray-50 dark:bg-gray-950' : 'bg-gray-50/70 dark:bg-gray-950/70'} z-50`
-			: ' bg-transparent z-0 '} {$isApp
-			? `ml-[4.5rem] md:ml-0 `
-			: ' transition-all duration-300 '} shrink-0 text-gray-900 dark:text-gray-200 text-sm fixed top-0 left-0 overflow-x-hidden
+		<div
+			bind:this={navElement}
+			id="sidebar"
+			class="h-screen max-h-[100dvh] min-h-screen select-none {$showSidebar
+				? `${$mobile ? 'bg-white dark:bg-gray-950' : 'bg-white/85 dark:bg-gray-950/80 backdrop-blur-md'} z-50`
+				: ' bg-transparent z-0 '} {$isApp
+				? `ml-[4.5rem] md:ml-0 `
+				: ' transition-all duration-300 '} shrink-0 text-gray-900 dark:text-gray-200 text-sm fixed top-0 left-0 overflow-x-hidden
         "
 		transition:slide={{ duration: 250, axis: 'x' }}
 		data-state={$showSidebar}
@@ -890,7 +890,7 @@
 				: 'invisible'}"
 		>
 			<div
-				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 sticky top-0 z-10 -mb-3"
+				class="sidebar px-[0.5625rem] pt-2 pb-1.5 flex justify-between space-x-1 text-gray-700 dark:text-gray-300 sticky top-0 z-10 -mb-3"
 			>
 				<a
 					class="flex items-center rounded-xl size-8.5 h-full justify-center hover:bg-gray-100/50 dark:hover:bg-gray-850/50 transition no-drag-region"
@@ -1388,10 +1388,10 @@
 				</Folder>
 			</div>
 
-			<div class="px-1.5 pt-1.5 pb-2 sticky bottom-0 z-10 -mt-3 sidebar">
-				<div
-					class=" sidebar-bg-gradient-to-t bg-linear-to-t from-gray-50 dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mt-6"
-				></div>
+				<div class="px-1.5 pt-1.5 pb-2 sticky bottom-0 z-10 -mt-3 sidebar">
+					<div
+						class=" sidebar-bg-gradient-to-t bg-linear-to-t from-white dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mt-6"
+					></div>
 				<div class="flex flex-col font-primary">
 					{#if $user !== undefined && $user !== null}
 						<UserMenu

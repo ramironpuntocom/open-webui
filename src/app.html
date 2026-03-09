@@ -50,6 +50,15 @@
 					localStorage.theme = 'system';
 				}
 
+				try {
+					const settings = JSON.parse(localStorage.getItem('settings') ?? '{}');
+					if (settings?.highContrastMode) {
+						document.documentElement.classList.add('high-contrast');
+					}
+				} catch {
+					document.documentElement.classList.remove('high-contrast');
+				}
+
 				if (localStorage.theme === 'system') {
 					document.documentElement.classList.add(prefersDarkTheme ? 'dark' : 'light');
 					metaThemeColorTag.setAttribute('content', prefersDarkTheme ? '#171717' : '#ffffff');

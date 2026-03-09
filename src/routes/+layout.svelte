@@ -103,6 +103,12 @@
 	let heartbeatInterval = null;
 
 	const BREAKPOINT = 768;
+	let settingsUnsubscribe = null;
+
+	const applyHighContrastClass = (enabled) => {
+		if (typeof document === 'undefined') return;
+		document.documentElement.classList.toggle('high-contrast', !!enabled);
+	};
 
 	const setupSocket = async (enableWebsocket) => {
 		const _socket = io(`${WEBUI_BASE_URL}` || undefined, {
@@ -748,7 +754,18 @@
 			if (window.applyTheme) {
 				window.applyTheme();
 			}
+
+			try {
+				const cachedSettings = JSON.parse(localStorage.getItem('settings') ?? '{}');
+				applyHighContrastClass(cachedSettings?.highContrastMode ?? false);
+			} catch {
+				applyHighContrastClass(false);
+			}
 		}
+
+		settingsUnsubscribe = settings.subscribe((value) => {
+			applyHighContrastClass(value?.highContrastMode ?? false);
+		});
 
 		if (window?.electronAPI) {
 			const info = await window.electronAPI.send({
@@ -947,6 +964,7 @@
 			document.removeEventListener('touchmove', touchmoveHandler);
 			document.removeEventListener('touchend', touchendHandler);
 			document.removeEventListener('visibilitychange', handleVisibilityChange);
+			settingsUnsubscribe?.();
 		};
 	});
 
