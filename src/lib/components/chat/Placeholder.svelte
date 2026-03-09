@@ -218,7 +218,7 @@
 					{toolServers}
 					{stopResponse}
 					{createMessagePair}
-					placeholder={$i18n.t('How can I help you today?')}
+					placeholder="¿En qué puedo ayudarte hoy?"
 					{onChange}
 					{onUpload}
 					on:submit={(e) => {

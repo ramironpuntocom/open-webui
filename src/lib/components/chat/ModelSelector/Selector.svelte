@@ -374,7 +374,7 @@
 		}
 	};
 
-	const ITEM_HEIGHT = 42;
+	const ITEM_HEIGHT = 64;
 	const OVERSCAN = 10;
 
 	let listScrollTop = 0;

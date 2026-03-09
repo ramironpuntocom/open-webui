@@ -64,6 +64,7 @@
 	import Sidebar from '../icons/Sidebar.svelte';
 	import PinnedModelList from './Sidebar/PinnedModelList.svelte';
 	import Note from '../icons/Note.svelte';
+	import ChartBar from '../icons/ChartBar.svelte';
 	import { slide } from 'svelte/transition';
 	import HotkeyHint from '../common/HotkeyHint.svelte';
 
@@ -819,6 +820,28 @@
 						</Tooltip>
 					</div>
 				{/if}
+
+				<div class="">
+					<Tooltip content="Espacio Consumer" placement="right">
+						<a
+							class="cursor-pointer flex rounded-xl hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition group"
+							href="/consumer"
+							on:click={async (e) => {
+								e.stopImmediatePropagation();
+								e.preventDefault();
+
+								goto('/consumer');
+								itemClickHandler();
+							}}
+							aria-label="Espacio Consumer"
+							draggable="false"
+						>
+							<div class=" self-center flex items-center justify-center size-9">
+								<ChartBar className="size-4.5" />
+							</div>
+						</a>
+					</Tooltip>
+				</div>
 			</div>
 		</button>
 
@@ -1054,6 +1077,27 @@
 							</a>
 						</div>
 					{/if}
+
+					<div class="px-[0.4375rem] flex justify-center text-[var(--sidebar-text)]">
+						<a
+							id="sidebar-consumer-button"
+							class="grow flex items-center space-x-3 rounded-xl px-3 py-2.5 hover:bg-[var(--sidebar-hover)] active:bg-[var(--sidebar-active)] transition"
+							href="/consumer"
+							on:click={itemClickHandler}
+							draggable="false"
+							aria-label="Espacio Consumer"
+						>
+							<div class="self-center">
+								<ChartBar className="size-4.5" strokeWidth="2" />
+							</div>
+
+							<div class="flex self-center translate-y-[0.5px]">
+								<div class="self-center text-[0.825rem] font-semibold tracking-[0.01em] font-primary">
+									Espacio Consumer
+								</div>
+							</div>
+						</a>
+					</div>
 				</div>
 
 				{#if ($models ?? []).length > 0 && (($settings?.pinnedModels ?? []).length > 0 || $config?.default_pinned_models)}

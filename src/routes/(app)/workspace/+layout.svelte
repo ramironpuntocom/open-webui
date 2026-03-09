@@ -57,7 +57,7 @@
 			: ''} max-w-full"
 	>
 		<nav
-			class="px-2.5 pt-1.5 backdrop-blur-xl drag-region select-none bg-[var(--topbar-bg)] border-b border-[var(--topbar-border)] text-[var(--topbar-text)]"
+			class="px-6 py-3 bg-[var(--topbar-bg)] text-[var(--topbar-text)] border-b border-[var(--topbar-border)] sticky top-0 z-40 backdrop-blur shadow-sm drag-region select-none"
 		>
 			<div class=" flex items-center gap-1">
 				{#if $mobile}
@@ -90,9 +90,9 @@
 							<a
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/models') ? 'page' : null}
-								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/models')
-									? 'text-[var(--topbar-text)]'
-									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
+								class="min-w-fit px-2 py-1 border-b-2 {$page.url.pathname.includes('/workspace/models')
+									? 'font-semibold border-[var(--sidebar-active)] text-[var(--topbar-text)]'
+									: 'border-transparent text-[var(--topbar-text)] hover:text-[var(--sidebar-text)]'} transition select-none"
 								href="/workspace/models">{$i18n.t('Models')}</a
 							>
 						{/if}
@@ -101,9 +101,9 @@
 							<a
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/knowledge') ? 'page' : null}
-								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/knowledge')
-									? 'text-[var(--topbar-text)]'
-									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
+								class="min-w-fit px-2 py-1 border-b-2 {$page.url.pathname.includes('/workspace/knowledge')
+									? 'font-semibold border-[var(--sidebar-active)] text-[var(--topbar-text)]'
+									: 'border-transparent text-[var(--topbar-text)] hover:text-[var(--sidebar-text)]'} transition select-none"
 								href="/workspace/knowledge"
 							>
 								{$i18n.t('Knowledge')}
@@ -114,9 +114,9 @@
 							<a
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/prompts') ? 'page' : null}
-								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/prompts')
-									? 'text-[var(--topbar-text)]'
-									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
+								class="min-w-fit px-2 py-1 border-b-2 {$page.url.pathname.includes('/workspace/prompts')
+									? 'font-semibold border-[var(--sidebar-active)] text-[var(--topbar-text)]'
+									: 'border-transparent text-[var(--topbar-text)] hover:text-[var(--sidebar-text)]'} transition select-none"
 								href="/workspace/prompts">{$i18n.t('Prompts')}</a
 							>
 						{/if}
@@ -125,9 +125,9 @@
 							<a
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/skills') ? 'page' : null}
-								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/skills')
-									? 'text-[var(--topbar-text)]'
-									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
+								class="min-w-fit px-2 py-1 border-b-2 {$page.url.pathname.includes('/workspace/skills')
+									? 'font-semibold border-[var(--sidebar-active)] text-[var(--topbar-text)]'
+									: 'border-transparent text-[var(--topbar-text)] hover:text-[var(--sidebar-text)]'} transition select-none"
 								href="/workspace/skills"
 							>
 								{$i18n.t('Skills')}
@@ -138,9 +138,9 @@
 							<a
 								draggable="false"
 								aria-current={$page.url.pathname.includes('/workspace/tools') ? 'page' : null}
-								class="min-w-fit p-1.5 {$page.url.pathname.includes('/workspace/tools')
-									? 'text-[var(--topbar-text)]'
-									: 'text-[var(--topbar-text-muted)] hover:text-[var(--topbar-text)]'} transition select-none"
+								class="min-w-fit px-2 py-1 border-b-2 {$page.url.pathname.includes('/workspace/tools')
+									? 'font-semibold border-[var(--sidebar-active)] text-[var(--topbar-text)]'
+									: 'border-transparent text-[var(--topbar-text)] hover:text-[var(--sidebar-text)]'} transition select-none"
 								href="/workspace/tools"
 							>
 								{$i18n.t('Tools')}

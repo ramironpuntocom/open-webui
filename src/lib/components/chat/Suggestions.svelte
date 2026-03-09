@@ -14,6 +14,37 @@
 
 	let sortedPrompts = [];
 
+	const PHOENIX_ES_PROMPT_MAP = [
+		{
+			fromTitle: ['Give me ideas', "for what to do with my kids' art"],
+			toTitle: ['Dame ideas', 'para usar los dibujos de mis hijos']
+		},
+		{
+			fromTitle: ['Help me study', 'vocabulary for a college entrance exam'],
+			toTitle: ['Ayúdame a estudiar', 'vocabulario para un examen']
+		},
+		{
+			fromTitle: ['Overcome procrastination', 'give me tips'],
+			toTitle: ['Dejar de procrastinar', 'dame algunos consejos']
+		}
+	];
+
+	const localizePromptForPhoenix = (prompt) => {
+		const title = Array.isArray(prompt?.title) ? prompt.title : [];
+		const match = PHOENIX_ES_PROMPT_MAP.find(
+			(item) => title[0] === item.fromTitle[0] && title[1] === item.fromTitle[1]
+		);
+
+		if (!match) {
+			return prompt;
+		}
+
+		return {
+			...prompt,
+			title: match.toTitle
+		};
+	};
+
 	const fuseOptions = {
 		keys: ['content', 'title'],
 		threshold: 0.5
@@ -59,7 +90,9 @@
 	};
 
 	$: if (suggestionPrompts) {
-		sortedPrompts = [...(suggestionPrompts ?? [])].sort(() => Math.random() - 0.5);
+		sortedPrompts = [...(suggestionPrompts ?? [])]
+			.map((prompt) => localizePromptForPhoenix(prompt))
+			.sort(() => Math.random() - 0.5);
 		getFilteredPrompts(inputValue);
 	}
 </script>
@@ -67,7 +100,7 @@
 <div class="mb-1 flex gap-1 text-xs font-medium items-center text-gray-600 dark:text-gray-400">
 	{#if filteredPrompts.length > 0}
 		<Bolt />
-		{$i18n.t('Suggested')}
+		Sugerencias
 	{:else}
 		<!-- Keine Vorschläge -->
 

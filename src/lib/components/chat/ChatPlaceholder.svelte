@@ -117,7 +117,7 @@
 						{/if}
 					{:else}
 						<div class=" text-gray-400 dark:text-gray-500 line-clamp-1 font-p">
-							{$i18n.t('How can I help you today?')}
+							¿En qué puedo ayudarte hoy?
 						</div>
 					{/if}
 				</div>

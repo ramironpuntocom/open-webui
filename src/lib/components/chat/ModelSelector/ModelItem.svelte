@@ -28,6 +28,37 @@
 	export let pinModelHandler: (modelId: string) => void = () => {};
 
 	export let onClick: () => void = () => {};
+	let capabilityChips: string[] = [];
+
+	const modelCapabilities: Record<string, string[]> = {
+		'qwen3-coder': ['💻 Código', '🧠 Razonamiento'],
+		'qwen2.5vl': ['👁 Visión', '📝 Texto'],
+		llama3: ['🧠 General', '⚡ Ligero'],
+		qwen3: ['🧠 General', '✍️ Escritura'],
+		gemma: ['🧠 Análisis', '✍️ Escritura'],
+		'gpt-oss': ['🧠 General', '🔎 Análisis'],
+		arena: ['🎯 Comparación']
+	};
+
+	const getCapabilityChips = (modelItem: any): string[] => {
+		const identifier = (
+			modelItem?.value ??
+			modelItem?.model?.id ??
+			modelItem?.model?.name ??
+			''
+		).toLowerCase();
+
+		const normalizedCandidates = [identifier, identifier.split('/').pop() ?? ''];
+		for (const [prefix, chips] of Object.entries(modelCapabilities)) {
+			if (normalizedCandidates.some((candidate) => candidate.startsWith(prefix))) {
+				return chips;
+			}
+		}
+
+		return [];
+	};
+
+	$: capabilityChips = getCapabilityChips(item);
 
 	const copyLinkHandler = async (model) => {
 		const baseUrl = window.location.origin;
@@ -74,7 +105,7 @@
 			</div>
 		{/if} -->
 
-		<div class="flex items-center gap-2">
+		<div class="flex items-start gap-2">
 			<div class="flex items-center min-w-fit">
 				<Tooltip content={$user?.role === 'admin' ? (item?.value ?? '') : ''} placement="top-start">
 					<img
@@ -86,12 +117,24 @@
 				</Tooltip>
 			</div>
 
-			<div class="flex items-center">
+			<div class="flex min-w-0 flex-col">
 				<Tooltip content={`${item.label} (${item.value})`} placement="top-start">
 					<div class="line-clamp-1">
 						{item.label}
 					</div>
 				</Tooltip>
+
+				{#if capabilityChips.length > 0}
+					<div class="flex flex-wrap gap-1 mt-1">
+						{#each capabilityChips as chip}
+							<span
+								class="text-[11px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-200"
+							>
+								{chip}
+							</span>
+						{/each}
+					</div>
+				{/if}
 			</div>
 
 			<div class=" shrink-0 flex items-center gap-2">
